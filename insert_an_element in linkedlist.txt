@@ -1,4 +1,4 @@
-Insert an element in linked list 1
+''' Insert an element in linked list 1
 
 
 Write a program to insert an element at the end of the linked list. Get the value continuously from the user until the user enters a negative value.
@@ -61,7 +61,7 @@ Sample Output 2
 
 
 
-code :
+code :     '''
 
 class Node:
     def __init__(self,data):
