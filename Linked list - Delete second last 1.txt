@@ -1,4 +1,6 @@
-''' Linked list - Delete second last 1
+'''
+Linked list - Delete second last 1
+
 
 Write a Program to delete the second last element from the list. If deletion of second last element is not possible, print "Deletion of second last element is not possible", Otherwise print the list after deleting the second last element.
 
@@ -44,7 +46,9 @@ Before deleting:
 After deleting:
 23 34 55 12 66 33
 
-code : '''
+CODE:
+
+'''
 
 class Node:
     def __init__(self,data):
