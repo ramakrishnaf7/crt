@@ -1,0 +1,29 @@
+def ms(arr,low, high) :
+    if low >= high :
+        return 
+    mid = (low + high)//2
+    ms(arr,low,mid) 
+    ms(arr,mid+1,high) 
+    merge(arr,low,mid,high) 
+def merge(arr,low, mid, high):
+    t = []
+    left = low
+    right = mid + 1
+    while left <= mid and right <= high:
+        if arr[left] <= arr[right]:
+            t.append(arr[left])
+            left += 1
+        else:
+            t.append(arr[right])
+            right += 1
+    while left <= mid:
+        t.append(arr[left])   
+        left += 1
+    while right <= high:
+        t.append(arr[right])
+        right += 1
+    for j in range(low,high+1):
+        arr[j] = t[j-low]
+arr = [2,5,3,7,3,7,8,3,1]   
+ms(arr,0,8)    
+print(arr)
