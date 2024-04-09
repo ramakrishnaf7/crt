@@ -1,0 +1,71 @@
+'''
+
+ N-Queens
+
+The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.
+
+Given an integer n, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.
+
+Each solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a queen and an empty space, respectively.
+
+ 
+
+Example 1:
+
+
+Input: n = 4
+Output: [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]
+Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above
+Example 2:
+
+Input: n = 1
+Output: [["Q"]]
+ 
+
+Constraints:
+
+1 <= n <= 9
+
+
+Code:
+
+
+'''
+class Solution:
+    def solveNQueens(self, n: int) -> List[List[str]]:
+        ans = []
+        res = ['.'*n for i in range(n)]
+        def isSafe(row,col):
+            t = row
+            c = col
+            while row >=0 and col >= 0:
+                if res[row][col] == 'Q':
+                    return False
+                row -= 1
+                col -= 1
+            row = t
+            col = c
+            while col >= 0:
+                if res[row][col] == 'Q':
+                    return False
+                col -= 1
+            row = t
+            col = c
+            while row < n and col >= 0:
+                if res[row][col] == 'Q':
+                    return False
+                row += 1
+                col -= 1
+            return True
+        def Solve(col,n):
+            if col == n:
+                ans.append(list(res))
+                return
+            for i in range(n):
+                if isSafe(i,col):
+                    res[i] = res[i][:col] + 'Q' + res[i][col+1:]
+                    Solve(col + 1,n)
+                    res[i] = res[i][:col] + '.' + res[i][col+1:]
+        Solve(0,n)  
+        return ans
+
